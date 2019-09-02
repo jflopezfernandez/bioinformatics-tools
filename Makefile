@@ -1,6 +1,7 @@
 
 CC              ?= gcc
 
+export CP       := $(strip cp -f)
 export MKDIR    := $(strip mkdir -p)
 export RM       := $(strip rm -f)
 
