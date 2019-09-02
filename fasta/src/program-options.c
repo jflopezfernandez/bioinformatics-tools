@@ -27,11 +27,41 @@ static option_id_t argument_is_valid_option(const char* arg) {
     return OPTION_NONE;
 }
 
+static char **arguments_vector = NULL;
+
+static size_t arguments = 0;
+
+static void add_argument(const char* argument) {
+    arguments_vector = reallocarray(arguments_vector, ++arguments, sizeof (char *));
+
+    if (arguments_vector == NULL) {
+        fprintf(stderr, "[Error] %s\n", "Memory reallocation failure in parse_program_options");
+        exit(EXIT_FAILURE);
+    }
+
+    if (argument) {
+        arguments_vector[arguments - 1] = strdup(argv[i]);
+
+        if (arguments_vector[arguments - 1] == NULL) {
+            fprintf(stderr, "[Error] %s\n", "Memory allocation failure in parse_program_options");
+        }
+    } else {
+        arguments_vector[arguments - 1] = NULL;
+    }
+}
+
 char **parse_program_options(int argc, char **argv) {
     for (int i = 1; i < argc; ++i) {
         option_id_t option_id = argument_is_valid_option(argv[i]);
 
+        /** If the string did not match any valid options, assume it's an
+         *  argument. Short circuit right away, incrementing the number of
+         *  arguments and reallocating the arguments vector to the appropriate
+         *  size.
+         * 
+         */
         if (option_id == OPTION_NONE) {
+            add_argument(argv[i]);
             continue;
         }
 
@@ -59,7 +89,9 @@ char **parse_program_options(int argc, char **argv) {
         }
     }
 
-    return NULL;
+    add_argument(NULL);
+
+    return arguments_vector;
 }
 
 #if defined(NONE)
