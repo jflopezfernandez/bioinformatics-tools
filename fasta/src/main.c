@@ -34,7 +34,7 @@ int main(int argc, char **argv)
             fputc(current_character, stdout);
         }
 
-        fclose(file);
+        close_file(file);
     }
 
     return EXIT_SUCCESS;
