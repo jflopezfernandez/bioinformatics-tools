@@ -1,6 +1,5 @@
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "fasta.h"
 
 int main(void)
 {
