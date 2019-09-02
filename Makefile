@@ -11,8 +11,6 @@ export CPPFLAGS := $(strip $(CPPFLAGS) -D_GNU_SOURCE -D_POSIX_C_SOURCE)
 export LDFLAGS  :=
 export LIBS     :=
 
-TESTDIR  := $(strip tests)
-
 TARGETS   := fasta
 
 .PHONY: all
