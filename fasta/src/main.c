@@ -20,11 +20,11 @@ int main(int argc, char **argv)
      */
     char **arguments = parse_program_options(argc, argv);
 
-    while (*arguments++) {
-        FILE* file = fopen(*arguments, "r");
+    while (*arguments) {
+        FILE* file = fopen(*arguments++, "r");
 
         if (file == NULL) {
-            fprintf(stderr, "[Error] %s (%s)\n", "Could not open file", *arguments);
+            fprintf(stderr, "[Error] %s (%s)\n", "Could not open file", *--arguments);
             exit(EXIT_FAILURE);
         }
 
