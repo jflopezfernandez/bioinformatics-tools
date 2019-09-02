@@ -3,7 +3,13 @@
 
 int main(int argc, char **argv)
 {
+    /** If the user did not provide any arguments, don't bother calling the
+     *  whole command-line argument processing apparatus; simply print the
+     *  program help menu and exit with an error status.
+     * 
+     */
     if (argc == 1) {
+        // TODO: Print program usage
         fprintf(stderr, "[Error] %s\n", "No input(s).");
         exit(EXIT_FAILURE);
     }
