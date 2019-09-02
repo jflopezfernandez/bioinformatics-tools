@@ -12,6 +12,7 @@ enum { FALSE = 0, TRUE = !FALSE };
 
 #include "file.h"
 #include "program-options.h"
+#include "settings.h"
 #include "str.h"
 
 #endif // PROJECT_INCLUDES_FASTA_H

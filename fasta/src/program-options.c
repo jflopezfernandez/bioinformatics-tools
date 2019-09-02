@@ -89,8 +89,7 @@ char **parse_program_options(int argc, char **argv) {
             } break;
 
             case OPTION_VERBOSE: {
-                // TODO: Handle verbose option
-                printf("-- verbose information output enabled --\n");
+                set_setting_verbose(TRUE);
             } break;
 
             default: {
