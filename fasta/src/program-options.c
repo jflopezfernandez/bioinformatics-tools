@@ -27,6 +27,16 @@ static option_id_t argument_is_valid_option(const char* arg) {
     return OPTION_NONE;
 }
 
+/** This arguments vector pointer is where the parse_program_options
+ *  function places the non-action/non-option arguments to be operated on
+ *  by the actual function. For example, a program invocation of
+ * 
+ *      fasta split sample-file.fasta --verbose
+ * 
+ *  would result in an argument vector containing a single char* value,
+ *  namely the "sample-file.fasta" string.
+ * 
+ */
 static char **arguments_vector = NULL;
 
 static size_t arguments = 0;
