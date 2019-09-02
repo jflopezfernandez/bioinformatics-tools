@@ -23,11 +23,6 @@ int main(int argc, char **argv)
     while (*arguments) {
         FILE* file = open_file(*arguments++, "r");
 
-        if (file == NULL) {
-            fprintf(stderr, "[Error] %s (%s)\n", "Could not open file", *--arguments);
-            exit(EXIT_FAILURE);
-        }
-
         int current_character = 0;
 
         while ((current_character = fgetc(file)) != EOF) {
