@@ -40,7 +40,7 @@ static void add_argument(const char* argument) {
     }
 
     if (argument) {
-        arguments_vector[arguments - 1] = strdup(argv[i]);
+        arguments_vector[arguments - 1] = strdup(argument);
 
         if (arguments_vector[arguments - 1] == NULL) {
             fprintf(stderr, "[Error] %s\n", "Memory allocation failure in parse_program_options");
