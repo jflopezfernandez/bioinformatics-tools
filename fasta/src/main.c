@@ -8,6 +8,16 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
+    /** This arguments vector pointer is where the parse_program_options
+     *  function places the non-action/non-option arguments to be operated on
+     *  by the actual function. For example, a program invocation of
+     * 
+     *      fasta split sample-file.fasta --verbose
+     * 
+     *  would result in an argument vector containing a single char* value,
+     *  namely the "sample-file.fasta" string.
+     * 
+     */
     char **arguments = parse_program_options(argc, argv);
 
     if (arguments == NULL) {
