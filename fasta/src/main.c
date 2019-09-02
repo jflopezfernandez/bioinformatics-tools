@@ -8,6 +8,12 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
+    char **arguments = parse_program_options(argc, argv);
+
+    if (arguments == NULL) {
+        fprintf(stderr, "Arguments were not really processed\n");
+    }
+
     while (*++argv) {
         FILE* file = fopen(*argv, "r");
 

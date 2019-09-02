@@ -17,6 +17,14 @@ static const struct option_t options[] = {
 
 static const size_t number_of_program_options = sizeof (options) / sizeof (options[0]);
 
+char **parse_program_options(int argc, char **argv) {
+    for (int i = 1; i < argc; ++argc) {
+        printf("%s\n", argv[i]);
+    }
+
+    return NULL;
+}
+
 #if defined(NONE)
 #undef NONE
 #endif

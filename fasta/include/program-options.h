@@ -18,4 +18,6 @@ struct option_t {
     const char* description;
 };
 
+char **parse_program_options(int argc, char **argv);
+
 #endif // PROJECT_INCLUDES_PROGRAM_OPTIONS_H
