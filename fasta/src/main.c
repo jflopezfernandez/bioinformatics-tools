@@ -11,7 +11,7 @@ int main(int argc, char **argv)
     char **arguments = parse_program_options(argc, argv);
 
     if (arguments == NULL) {
-        fprintf(stderr, "Arguments were not really processed\n");
+        fprintf(stderr, "\nArguments were not really processed\n\n");
     }
 
     while (*++argv) {
