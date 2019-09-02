@@ -2,3 +2,6 @@
 # Data Directory
 data/
 
+# Executable
+fasta
+
