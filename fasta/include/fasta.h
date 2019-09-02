@@ -4,7 +4,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "program-options.h"
+#include "str.h"
 
 #endif // PROJECT_INCLUDES_FASTA_H
