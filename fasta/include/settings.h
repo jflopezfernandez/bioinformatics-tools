@@ -2,7 +2,7 @@
 #ifndef PROJECT_INCLUDES_SETTINGS_H
 #define PROJECT_INCLUDES_SETTINGS_H
 
-typdef enum enum_setting_t {
+typedef enum {
     SETTING_NONE,
     SETTING_VERBOSE
 } setting_t;

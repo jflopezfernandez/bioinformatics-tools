@@ -7,6 +7,6 @@ setting_t get_setting_verbose(void) {
     return settings.verbose;
 }
 
-void set_setting_verbose(setting_t) {
-    settings.verbose = TRUE;
+void set_setting_verbose(setting_t setting) {
+    settings.verbose = setting;
 }
