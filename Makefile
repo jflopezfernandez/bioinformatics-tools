@@ -6,7 +6,7 @@ export MKDIR    := $(strip mkdir -p)
 export RM       := $(strip rm -f)
 
 export CC       := $(CC)
-export CFLAGS   := $(strip $(CFLAGS) -std=c17 -Wall -Wextra -Wpedantic)
+export CFLAGS   := $(strip $(CFLAGS) -std=c17 -Wall -Wextra -Wpedantic -Ofast -mtune=intel -march=skylake)
 export CPPFLAGS := $(strip $(CPPFLAGS) -D_GNU_SOURCE -D_POSIX_C_SOURCE)
 export LDFLAGS  :=
 export LIBS     :=

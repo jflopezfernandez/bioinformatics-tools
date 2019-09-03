@@ -4,7 +4,17 @@
 static size_t current_fasta_sequence = 0;
 
 static const char* derivative_filename(const char* original) {
-    size_t length = strlen(original) + strlen("-dddd");
+    char* original_filename = strdup(basename(original));
+
+    char* original_basename = strtok(original_filename, ".");
+
+    if (original_basename == NULL) {
+        fprintf(stderr, "[Error] %s\n", "Failed to get original file basename");
+        exit(EXIT_FAILURE);
+    }
+
+    size_t length = strlen(original_basename) + strlen("-dddd.fasta");
+
     char* filename = malloc(sizeof (char) * length + 1);
 
     if (filename == NULL) {
@@ -12,7 +22,7 @@ static const char* derivative_filename(const char* original) {
         exit(EXIT_FAILURE);
     }
 
-    sprintf(filename, "%s-%04lu", original, ++current_fasta_sequence);
+    sprintf(filename, "%s-%04lu.fasta", basename(original_basename), ++current_fasta_sequence);
 
     return filename;
 }
