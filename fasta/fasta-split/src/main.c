@@ -1,6 +1,22 @@
 
 #include "fasta.h"
 
+static size_t current_fasta_sequence = 0;
+
+static const char* derivative_filename(const char* original) {
+    size_t length = strlen(original) + strlen("-dddd");
+    char* filename = malloc(sizeof (char) * length + 1);
+
+    if (filename == NULL) {
+        fprintf(stderr, "[Error] %s\n", "Memory allocation failure in derivative_filename");
+        exit(EXIT_FAILURE);
+    }
+
+    sprintf(filename, "%s-%04lu", original, ++current_fasta_sequence);
+
+    return filename;
+}
+
 int main(int argc, char **argv)
 {
     /** If the user did not provide any arguments, don't bother calling the
@@ -27,15 +43,30 @@ int main(int argc, char **argv)
     char **arguments = parse_program_options(argc, argv);
 
     while (*arguments) {
-        FILE* file = open_file(*arguments++, "r");
+        FILE* input_file = open_file(*arguments, "r");
+        FILE* output_file = open_file(derivative_filename(*arguments), "w");
+
+        int started = FALSE;
 
         int current_character = 0;
 
-        while ((current_character = fgetc(file)) != EOF) {
-            fputc(current_character, stdout);
-        }
+        while ((current_character = fgetc(input_file)) != EOF) {
+            if (current_character == '>') {
+                if (started) {
+                    close_file(output_file);
+                    open_file(derivative_filename(*arguments), "w");
+                } else {
+                    started = TRUE;
+                }
+            }
 
-        close_file(file);
+            putc(current_character, output_file);
+        }
+        
+        close_file(output_file);
+        close_file(input_file);
+
+        ++arguments;
     }
 
     return EXIT_SUCCESS;
