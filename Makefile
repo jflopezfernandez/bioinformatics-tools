@@ -11,12 +11,12 @@ export CPPFLAGS := $(strip $(CPPFLAGS) -D_GNU_SOURCE -D_POSIX_C_SOURCE)
 export LDFLAGS  :=
 export LIBS     :=
 
-DIRS            := fasta
+DIRS            := fasta seq
 
 .PHONY: all
 all:
-	$(foreach DIR,$(DIRS),$(MAKE) -C $(DIR))
+	$(foreach DIR,$(DIRS),$(MAKE) -C $(DIR);)
 
 .PHONY: clean
 clean:
-	$(foreach DIR,$(DIRS),$(MAKE) -C $(DIR) clean)
+	$(foreach DIR,$(DIRS),$(MAKE) -C $(DIR) clean;)
